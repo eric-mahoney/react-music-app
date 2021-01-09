@@ -1,0 +1,21 @@
+.song-container {
+  margin: 10px 0px;
+  display: flex;
+}
+
+.song-container:hover {
+  cursor: pointer;
+  background-color: rgba(0, 204, 255, 0.137);
+}
+
+.song-image {
+  width: 50%;
+}
+
+.song-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

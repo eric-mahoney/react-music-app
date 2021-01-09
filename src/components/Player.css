@@ -1,0 +1,32 @@
+.player-container {
+  width: 100%;
+  padding: 50px 0px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  height: 100px;
+}
+
+.player-controls {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  font-size: 3rem;
+}
+
+.timeline-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.song-timeline {
+  width: 80%;
+}
