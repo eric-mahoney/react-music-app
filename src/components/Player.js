@@ -16,6 +16,7 @@ const Player = ({ songs, currentSong, setCurrentSong, songIndex, setSongIndex, s
   });
   const audioRef = useRef(null); // reference to our audio player
   const sliderRef = useRef(null); // reference to our slider
+
   // pauses and plays the music based on the current state
   const songHandler = () => {
     if (isPlaying) {

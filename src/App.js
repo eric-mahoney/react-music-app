@@ -17,9 +17,8 @@ const App = () => {
 
   return (
     <div className="app-container">
-      {libraryOpen && <Library songs={songs} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />}
-      <button onClick={() => setLibraryOpen(!libraryOpen)}>Library</button>
-      <CurrentSong currentSong={currentSong} />
+      {libraryOpen && <Library songs={songs} setStream={setStream} setCurrentSong={setCurrentSong} />}
+      <CurrentSong currentSong={currentSong} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
       <Player
         songs={songs}
         currentSong={currentSong}
