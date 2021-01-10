@@ -45,7 +45,7 @@ const Player = ({ songs, currentSong, setCurrentSong, songIndex, setSongIndex, s
       <div className="player">
         <div class="timeline-container">
           <p>{convertTime(currentTime.currentTime)}</p>
-          <input ref={sliderRef} min={0} max={currentTime.duration} type="range" value={currentTime.currentTime} className="song-timeline" onChange={dragSlider}></input>
+          <input ref={sliderRef} min={0} max={currentTime.duration || 0} type="range" value={currentTime.currentTime} className="song-timeline" onChange={dragSlider}></input>
           <p>{convertTime(currentTime.duration)}</p>
         </div>
         <div className="player-controls">

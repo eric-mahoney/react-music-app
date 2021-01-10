@@ -8,6 +8,10 @@
   background-color: #caf0f8;
 }
 
+.active-song {
+  background-color: #f8caca;
+}
+
 .song-image {
   width: 75px;
   height: 75px;

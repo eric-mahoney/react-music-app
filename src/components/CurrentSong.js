@@ -14,8 +14,8 @@ const CurrentSong = ({ currentSong, libraryOpen, setLibraryOpen }) => {
         <img src={artwork} />
       </div>
       <div className="details">
-        <h2 className="artist">{artist}</h2>
-        <p className="song">{song}</p>
+        <h2 className="song">{song}</h2>
+        <p className="artist">{artist}</p>
       </div>
     </div>
   );

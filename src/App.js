@@ -17,7 +17,9 @@ const App = () => {
 
   return (
     <div className="app-container">
-      {libraryOpen && <Library libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} songs={songs} setStream={setStream} setCurrentSong={setCurrentSong} />}
+      {libraryOpen && (
+        <Library libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} songs={songs} setSongs={setSongs} setStream={setStream} setCurrentSong={setCurrentSong} currentSong={currentSong} />
+      )}
       <CurrentSong currentSong={currentSong} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
       <Player
         songs={songs}
