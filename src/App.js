@@ -19,18 +19,16 @@ const App = () => {
   return (
     <div className="app-container">
       <Navbar setLibraryOpen={setLibraryOpen} libraryOpen={libraryOpen} />
-      {libraryOpen && (
-        <Library
-          setLibraryOpen={setLibraryOpen}
-          libraryOpen={libraryOpen}
-          setCurrentSong={setCurrentSong}
-          currentSong={currentSong}
-          setIsPlaying={setIsPlaying}
-          setStream={setStream}
-          setSongs={setSongs}
-          songs={songs}
-        />
-      )}
+      <Library
+        setLibraryOpen={setLibraryOpen}
+        libraryOpen={libraryOpen}
+        setCurrentSong={setCurrentSong}
+        currentSong={currentSong}
+        setIsPlaying={setIsPlaying}
+        setStream={setStream}
+        setSongs={setSongs}
+        songs={songs}
+      />
       <CurrentSong isPlaying={isPlaying} currentSong={currentSong} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
       <Player setIsPlaying={setIsPlaying} isPlaying={isPlaying} stream={stream} />
     </div>

@@ -3,7 +3,7 @@ import "./Library.css";
 
 const Library = ({ setLibraryOpen, setIsPlaying, setCurrentSong, setSongs, setStream, songs, currentSong, libraryOpen }) => {
   return (
-    <div className="library-container">
+    <div className={`library-container ${libraryOpen ? "active-library" : ""} `}>
       <button className="close-btn" onClick={() => setLibraryOpen(!libraryOpen)}>
         Close
       </button>
