@@ -3,6 +3,7 @@ import CurrentSong from "./components/CurrentSong";
 import Library from "./components/Library";
 import Player from "./components/Player";
 import Utilities from "./components/Utilities";
+import Navbar from "./components/Navbar";
 
 import { useState } from "react";
 
@@ -17,19 +18,21 @@ const App = () => {
 
   return (
     <div className="app-container">
-      {libraryOpen && <Library libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} songs={songs} setStream={setStream} setCurrentSong={setCurrentSong} />}
-      <CurrentSong currentSong={currentSong} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
-      <Player
-        songs={songs}
-        currentSong={currentSong}
-        setCurrentSong={setCurrentSong}
-        songIndex={songIndex}
-        setSongIndex={setSongIndex}
-        stream={stream}
-        setStream={setStream}
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-      />
+      <Navbar setLibraryOpen={setLibraryOpen} libraryOpen={libraryOpen} />
+      {libraryOpen && (
+        <Library
+          setLibraryOpen={setLibraryOpen}
+          libraryOpen={libraryOpen}
+          setCurrentSong={setCurrentSong}
+          currentSong={currentSong}
+          setIsPlaying={setIsPlaying}
+          setStream={setStream}
+          setSongs={setSongs}
+          songs={songs}
+        />
+      )}
+      <CurrentSong isPlaying={isPlaying} currentSong={currentSong} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
+      <Player setIsPlaying={setIsPlaying} isPlaying={isPlaying} stream={stream} />
     </div>
   );
 };

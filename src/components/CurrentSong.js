@@ -1,21 +1,18 @@
 import "./CurrentSong.css";
 
-const CurrentSong = ({ currentSong, libraryOpen, setLibraryOpen }) => {
+const CurrentSong = ({ currentSong, isPlaying }) => {
   const artist = currentSong.artist;
   const song = currentSong.song;
   const artwork = currentSong.artwork;
 
   return (
     <div className="currentsong-container">
-      <button className="library-btn" onClick={() => setLibraryOpen(!libraryOpen)}>
-        Library
-      </button>
-      <div className="artwork">
+      <div className={`artwork ${isPlaying ? "spinning" : ""}`}>
         <img src={artwork} />
       </div>
       <div className="details">
-        <h2 className="artist">{artist}</h2>
-        <p className="song">{song}</p>
+        <h2 className="song">{song}</h2>
+        <p className="artist">{artist}</p>
       </div>
     </div>
   );

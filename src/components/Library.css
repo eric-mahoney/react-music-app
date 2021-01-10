@@ -3,10 +3,10 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 25%;
+  width: 300px;
   box-shadow: 0px 6px 50px rgba(0, 0, 0, 0.13);
   background-color: white;
-  z-index: 5;
+  z-index: 999;
   color: black;
   overflow: scroll;
 }

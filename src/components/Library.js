@@ -1,14 +1,25 @@
 import LibrarySong from "./LibrarySong";
 import "./Library.css";
 
-const Library = ({ songs, setCurrentSong, setStream, libraryOpen, setLibraryOpen }) => {
+const Library = ({ setLibraryOpen, setIsPlaying, setCurrentSong, setSongs, setStream, songs, currentSong, libraryOpen }) => {
   return (
     <div className="library-container">
       <button className="close-btn" onClick={() => setLibraryOpen(!libraryOpen)}>
         Close
       </button>
       {songs.map((song) => (
-        <LibrarySong setCurrentSong={setCurrentSong} setStream={setStream} songs={songs} song={song} key={song.id} id={song.id} />
+        <LibrarySong
+          setIsPlaying={setIsPlaying}
+          setCurrentSong={setCurrentSong}
+          setStream={setStream}
+          setSongs={setSongs}
+          songs={songs}
+          currentSong={currentSong}
+          songs={songs}
+          song={song}
+          key={song.id}
+          id={song.id}
+        />
       ))}
     </div>
   );

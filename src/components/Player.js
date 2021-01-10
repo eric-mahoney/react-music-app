@@ -8,7 +8,7 @@ import { useRef, useEffect, useState } from "react";
 
 import "./Player.css";
 
-const Player = ({ songs, currentSong, setCurrentSong, songIndex, setSongIndex, stream, setStream, isPlaying, setIsPlaying }) => {
+const Player = ({ stream, isPlaying, setIsPlaying }) => {
   // hook for controlling the state of the song
   const [currentTime, setCurrentTime] = useState({
     currentTime: null,
@@ -45,7 +45,7 @@ const Player = ({ songs, currentSong, setCurrentSong, songIndex, setSongIndex, s
       <div className="player">
         <div class="timeline-container">
           <p>{convertTime(currentTime.currentTime)}</p>
-          <input ref={sliderRef} min={0} max={currentTime.duration} type="range" value={currentTime.currentTime} className="song-timeline" onChange={dragSlider}></input>
+          <input ref={sliderRef} min={0} max={currentTime.duration || 0} type="range" value={currentTime.currentTime} className="song-slider" onChange={dragSlider}></input>
           <p>{convertTime(currentTime.duration)}</p>
         </div>
         <div className="player-controls">

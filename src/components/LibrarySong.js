@@ -1,14 +1,30 @@
 import { faWonSign } from "@fortawesome/free-solid-svg-icons";
 import react from "react";
+import CurrentSong from "./CurrentSong";
 import "./LibrarySong.css";
 
-const LibrarySong = ({ song, setCurrentSong, setStream }) => {
+const LibrarySong = ({ setSongs, setIsPlaying, setCurrentSong, setStream, song, songs, currentSong, id }) => {
   const selectSongHandler = () => {
     setCurrentSong(song);
     setStream(song.stream);
+    const selectedSong = songs.map((song) => {
+      if (song.id === id) {
+        return {
+          ...song,
+          active: true,
+        };
+      } else {
+        return {
+          ...song,
+          active: false,
+        };
+      }
+    });
+    setSongs(selectedSong);
+    setIsPlaying(false);
   };
   return (
-    <div className="song-container" id={song.id} onClick={(e) => selectSongHandler(e)}>
+    <div className={`song-container ${song.active ? "active-song" : ""}`} id={song.id} onClick={(e) => selectSongHandler(e)}>
       <img className="song-image" alt={song.song} src={song.artwork} />
       <div className="song-details">
         <h3 className="song-title">{song.song}</h3>
