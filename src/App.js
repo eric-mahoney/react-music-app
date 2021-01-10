@@ -3,6 +3,7 @@ import CurrentSong from "./components/CurrentSong";
 import Library from "./components/Library";
 import Player from "./components/Player";
 import Utilities from "./components/Utilities";
+import Navbar from "./components/Navbar";
 
 import { useState } from "react";
 
@@ -17,6 +18,7 @@ const App = () => {
 
   return (
     <div className="app-container">
+      <Navbar setLibraryOpen={setLibraryOpen} libraryOpen={libraryOpen} />
       {libraryOpen && (
         <Library libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} songs={songs} setSongs={setSongs} setStream={setStream} setCurrentSong={setCurrentSong} currentSong={currentSong} />
       )}

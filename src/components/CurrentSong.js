@@ -7,9 +7,6 @@ const CurrentSong = ({ currentSong, libraryOpen, setLibraryOpen }) => {
 
   return (
     <div className="currentsong-container">
-      <button className="library-btn" onClick={() => setLibraryOpen(!libraryOpen)}>
-        Library
-      </button>
       <div className="artwork">
         <img src={artwork} />
       </div>
