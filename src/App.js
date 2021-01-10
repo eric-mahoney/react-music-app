@@ -11,7 +11,6 @@ const App = () => {
   const songList = Utilities();
   const [songs, setSongs] = useState(songList);
   const [currentSong, setCurrentSong] = useState(songs[0]);
-  const [songIndex, setSongIndex] = useState(0);
   const [stream, setStream] = useState(currentSong.stream);
   const [isPlaying, setIsPlaying] = useState(false);
   const [libraryOpen, setLibraryOpen] = useState(false);
@@ -30,7 +29,7 @@ const App = () => {
         songs={songs}
       />
       <CurrentSong isPlaying={isPlaying} currentSong={currentSong} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
-      <Player setIsPlaying={setIsPlaying} isPlaying={isPlaying} stream={stream} />
+      <Player setIsPlaying={setIsPlaying} isPlaying={isPlaying} setStream={setStream} stream={stream} currentSong={currentSong} setCurrentSong={setCurrentSong} setSongs={setSongs} songs={songs} />
     </div>
   );
 };
