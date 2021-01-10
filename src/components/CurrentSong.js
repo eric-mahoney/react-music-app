@@ -8,7 +8,7 @@ const CurrentSong = ({ currentSong, isPlaying }) => {
   return (
     <div className="currentsong-container">
       <div className={`artwork ${isPlaying ? "spinning" : ""}`}>
-        <img src={artwork} />
+        <img alt={song} src={artwork} />
       </div>
       <div className="details">
         <h2 className="song">{song}</h2>
