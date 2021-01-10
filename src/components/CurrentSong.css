@@ -1,6 +1,5 @@
 .currentsong-container {
-  width: 100%;
-  margin: 0 auto;
+  grid-area: song;
   display: flex;
   flex-direction: column;
   justify-content: center;
