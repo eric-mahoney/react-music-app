@@ -29,11 +29,18 @@ button {
 }
 
 .app-container {
-  height: 90vh;
+  height: 100vh;
   display: grid;
   grid-template-areas:
     "navbar"
     "song"
     "player";
   grid-template-rows: 10% 1fr 20%;
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    height: 70vh;
+    grid-template-rows: 10% 1fr 20%;
+  }
 }
