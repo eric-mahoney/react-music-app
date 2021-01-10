@@ -36,6 +36,46 @@ const Utilities = () => {
       stream: "https://mp3.chillhop.com/serve.php/?mp3=9272",
       active: false,
     },
+    {
+      id: 5,
+      artist: "Makzo",
+      song: "Departure",
+      artwork: "https://chillhop.com/wp-content/uploads/2020/11/f78c39b4bb6313ddd0354bef896c591bfb490ff8-1024x1024.jpg",
+      stream: "https://mp3.chillhop.com/serve.php/?mp3=11771",
+      active: false,
+    },
+    {
+      id: 6,
+      artist: "Swørn",
+      song: "Going Back",
+      artwork: "https://chillhop.com/wp-content/uploads/2020/10/737bb830d34592344eb4a2a1d2c006cdbfc811d9-1024x1024.jpg",
+      stream: "https://mp3.chillhop.com/serve.php/?mp3=10310",
+      active: false,
+    },
+    {
+      id: 7,
+      artist: "Philanthrope",
+      song: "Serendipity",
+      artwork: "https://chillhop.com/wp-content/uploads/2020/09/2899f7cc22ab12e17d0119819aac3ca9dbab46e6-1024x1024.jpg",
+      stream: "https://mp3.chillhop.com/serve.php/?mp3=10249",
+      active: false,
+    },
+    {
+      id: 8,
+      artist: "Toonorth",
+      song: "Foggy Road",
+      artwork: "https://chillhop.com/wp-content/uploads/2020/10/efaa848553d09b4d9fc0752844456e41b34de276-1024x1024.jpg",
+      stream: "https://mp3.chillhop.com/serve.php/?mp3=7834",
+      active: false,
+    },
+    {
+      id: 9,
+      artist: "Mo Anando",
+      song: "Yesterday",
+      artwork: "https://chillhop.com/wp-content/uploads/2020/07/b6e48e6cfb2a90723b9cf1b108a6d305f9204eb4-1024x1024.jpg",
+      stream: "https://mp3.chillhop.com/serve.php/?mp3=9281",
+      active: false,
+    },
   ];
   return songs;
 };

@@ -1,13 +1,13 @@
 import "./CurrentSong.css";
 
-const CurrentSong = ({ currentSong, libraryOpen, setLibraryOpen }) => {
+const CurrentSong = ({ currentSong, isPlaying }) => {
   const artist = currentSong.artist;
   const song = currentSong.song;
   const artwork = currentSong.artwork;
 
   return (
     <div className="currentsong-container">
-      <div className="artwork">
+      <div className={`artwork ${isPlaying ? "spinning" : ""}`}>
         <img src={artwork} />
       </div>
       <div className="details">

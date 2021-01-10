@@ -20,19 +20,28 @@ const App = () => {
     <div className="app-container">
       <Navbar setLibraryOpen={setLibraryOpen} libraryOpen={libraryOpen} />
       {libraryOpen && (
-        <Library libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} songs={songs} setSongs={setSongs} setStream={setStream} setCurrentSong={setCurrentSong} currentSong={currentSong} />
+        <Library
+          setLibraryOpen={setLibraryOpen}
+          libraryOpen={libraryOpen}
+          setCurrentSong={setCurrentSong}
+          currentSong={currentSong}
+          setIsPlaying={setIsPlaying}
+          setStream={setStream}
+          setSongs={setSongs}
+          songs={songs}
+        />
       )}
-      <CurrentSong currentSong={currentSong} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
+      <CurrentSong isPlaying={isPlaying} currentSong={currentSong} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
       <Player
-        songs={songs}
-        currentSong={currentSong}
         setCurrentSong={setCurrentSong}
-        songIndex={songIndex}
-        setSongIndex={setSongIndex}
-        stream={stream}
-        setStream={setStream}
-        isPlaying={isPlaying}
+        currentSong={currentSong}
         setIsPlaying={setIsPlaying}
+        isPlaying={isPlaying}
+        setSongIndex={setSongIndex}
+        songIndex={songIndex}
+        setStream={setStream}
+        stream={stream}
+        songs={songs}
       />
     </div>
   );

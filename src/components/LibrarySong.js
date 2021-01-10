@@ -3,7 +3,7 @@ import react from "react";
 import CurrentSong from "./CurrentSong";
 import "./LibrarySong.css";
 
-const LibrarySong = ({ song, setSongs, songs, currentSong, setCurrentSong, setStream, id }) => {
+const LibrarySong = ({ setSongs, setIsPlaying, setCurrentSong, setStream, song, songs, currentSong, id }) => {
   const selectSongHandler = () => {
     setCurrentSong(song);
     setStream(song.stream);
@@ -21,6 +21,7 @@ const LibrarySong = ({ song, setSongs, songs, currentSong, setCurrentSong, setSt
       }
     });
     setSongs(selectedSong);
+    setIsPlaying(false);
   };
   return (
     <div className={`song-container ${song.active ? "active-song" : ""}`} id={song.id} onClick={(e) => selectSongHandler(e)}>
