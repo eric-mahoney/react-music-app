@@ -8,7 +8,7 @@ import { useRef, useEffect, useState } from "react";
 
 import "./Player.css";
 
-const Player = ({ songs, currentSong, setCurrentSong, songIndex, setSongIndex, stream, setStream, isPlaying, setIsPlaying }) => {
+const Player = ({ stream, isPlaying, setIsPlaying }) => {
   // hook for controlling the state of the song
   const [currentTime, setCurrentTime] = useState({
     currentTime: null,

@@ -32,17 +32,7 @@ const App = () => {
         />
       )}
       <CurrentSong isPlaying={isPlaying} currentSong={currentSong} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
-      <Player
-        setCurrentSong={setCurrentSong}
-        currentSong={currentSong}
-        setIsPlaying={setIsPlaying}
-        isPlaying={isPlaying}
-        setSongIndex={setSongIndex}
-        songIndex={songIndex}
-        setStream={setStream}
-        stream={stream}
-        songs={songs}
-      />
+      <Player setIsPlaying={setIsPlaying} isPlaying={isPlaying} stream={stream} />
     </div>
   );
 };
