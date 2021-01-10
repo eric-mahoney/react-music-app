@@ -31,9 +31,3 @@ button {
   /* Corrects inability to style clickable `input` types in iOS */
   -webkit-appearance: none;
 }
-
-/* Remove excess padding and border in Firefox 4+ */
-button::-moz-focus-inner {
-  border: 0;
-  padding: ;
-}
