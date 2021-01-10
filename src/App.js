@@ -20,12 +20,12 @@ const App = () => {
       <Navbar setLibraryOpen={setLibraryOpen} libraryOpen={libraryOpen} />
       <Library
         setLibraryOpen={setLibraryOpen}
-        libraryOpen={libraryOpen}
         setCurrentSong={setCurrentSong}
-        currentSong={currentSong}
         setIsPlaying={setIsPlaying}
         setStream={setStream}
         setSongs={setSongs}
+        libraryOpen={libraryOpen}
+        currentSong={currentSong}
         songs={songs}
       />
       <CurrentSong isPlaying={isPlaying} currentSong={currentSong} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
