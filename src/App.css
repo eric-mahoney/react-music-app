@@ -38,6 +38,18 @@ button {
   grid-template-rows: 10% 1fr 20%;
 }
 
+.footer {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.footer a {
+  text-decoration: none;
+  color: black;
+}
+
 @media (max-width: 600px) {
   .app-container {
     height: 70vh;

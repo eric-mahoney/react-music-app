@@ -30,6 +30,11 @@ const App = () => {
       />
       <CurrentSong isPlaying={isPlaying} currentSong={currentSong} libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
       <Player setIsPlaying={setIsPlaying} isPlaying={isPlaying} setStream={setStream} stream={stream} currentSong={currentSong} setCurrentSong={setCurrentSong} setSongs={setSongs} songs={songs} />
+      <footer className="footer">
+        <a href="https://github.com/eric-mahoney/react-music-app" target="_blank" rel="noreferrer">
+          view on github
+        </a>
+      </footer>
     </div>
   );
 };
