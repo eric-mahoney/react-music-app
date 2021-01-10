@@ -30,3 +30,9 @@
 .song-timeline {
   width: 80%;
 }
+
+@media (max-width: 800px) {
+  .player {
+    width: 95%;
+  }
+}
