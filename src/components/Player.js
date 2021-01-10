@@ -17,9 +17,9 @@ const Player = ({ stream, setStream, isPlaying, setIsPlaying, currentSong, setCu
   const audioRef = useRef(null); // reference to our audio player
   const sliderRef = useRef(null); // reference to our slider
 
-  useEffect(() => {
+  const updateActive = (newSong) => {
     const selectedSong = songs.map((song) => {
-      if (song.id === currentSong.id) {
+      if (song.id === newSong.id) {
         return {
           ...song,
           active: true,
@@ -32,7 +32,7 @@ const Player = ({ stream, setStream, isPlaying, setIsPlaying, currentSong, setCu
       }
     });
     setSongs(selectedSong);
-  }, [currentSong]);
+  };
 
   // pauses and plays the music based on the current state
   const songHandler = () => {
@@ -63,15 +63,18 @@ const Player = ({ stream, setStream, isPlaying, setIsPlaying, currentSong, setCu
       const song = songs[(currentIndex + 1) % songs.length];
       setCurrentSong(song);
       setStream(song.stream);
+      updateActive(song);
     } else {
       if (currentIndex === 0) {
         const song = songs[songs.length - 1];
         setCurrentSong(song);
         setStream(song.stream);
+        updateActive(song);
       } else {
         const song = songs[(currentIndex - 1) % songs.length];
         setCurrentSong(song);
         setStream(song.stream);
+        updateActive(song);
       }
     }
     setIsPlaying(false);
