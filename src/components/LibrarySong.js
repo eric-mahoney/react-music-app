@@ -1,6 +1,3 @@
-import { faWonSign } from "@fortawesome/free-solid-svg-icons";
-import react from "react";
-import CurrentSong from "./CurrentSong";
 import "./LibrarySong.css";
 
 const LibrarySong = ({ setSongs, setIsPlaying, setLibraryOpen, setCurrentSong, setStream, song, songs, currentSong, id }) => {

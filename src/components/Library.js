@@ -14,7 +14,6 @@ const Library = ({ setLibraryOpen, setIsPlaying, setCurrentSong, setSongs, setSt
           setLibraryOpen={setLibraryOpen}
           setStream={setStream}
           setSongs={setSongs}
-          songs={songs}
           currentSong={currentSong}
           songs={songs}
           song={song}

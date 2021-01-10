@@ -4,7 +4,7 @@ import { faPause } from "@fortawesome/free-solid-svg-icons";
 import { faStepForward } from "@fortawesome/free-solid-svg-icons";
 import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 
 import "./Player.css";
 
