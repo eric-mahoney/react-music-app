@@ -4,8 +4,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { libraryOpenState, librarySongState } from "../../store/Library";
 
 const Library = () => {
-  const songs = useRecoilValue(librarySongState);
   const [libraryOpen, setLibraryOpen] = useRecoilState(libraryOpenState);
+  const songs = useRecoilValue(librarySongState);
 
   return (
     <div className={`library-container ${libraryOpen ? "active-library" : ""} `}>
