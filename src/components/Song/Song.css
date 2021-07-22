@@ -1,0 +1,41 @@
+.currentsong-container {
+  grid-area: song;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.artwork {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.artwork img {
+  height: 100%;
+  width: auto;
+}
+
+.details {
+  margin: 20px 0px;
+}
+
+.spinning {
+  animation: spinning-record;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spinning-record {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
