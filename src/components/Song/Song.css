@@ -1,4 +1,4 @@
-.currentsong-container {
+.song-container {
   grid-area: song;
   display: flex;
   flex-direction: column;
