@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import { Song } from "../../models";
-import { currentSongState } from "../../store/Song";
+import { libraryOpenState, librarySongState } from "../../store/Library";
 import "./LibrarySong.css";
 
 interface LibrarySongProps {
@@ -8,30 +8,34 @@ interface LibrarySongProps {
   id: number;
 }
 
-// const selectSongHandler = () => {
-//   setCurrentSong(song);
-//   setStream(song.stream);
-//   const selectedSong = songs.map((song) => {
-//     if (song.id === id) {
-//       return {
-//         ...song,
-//         active: true,
-//       };
-//     } else {
-//       return {
-//         ...song,
-//         active: false,
-//       };
-//     }
-//   });
-//   setSongs(selectedSong);
-//   setIsPlaying(false);
-//   setLibraryOpen(false);
-// };
+function updateLibrary(id: number, library: Song[]) {
+  return library.map((song: Song) => {
+    if (song.id === id) {
+      return {
+        ...song,
+        active: true,
+      };
+    } else {
+      return {
+        ...song,
+        active: false,
+      };
+    }
+  });
+}
 
 const LibrarySong = ({ song, id }: LibrarySongProps) => {
+  const [librarySongs, setLibrarySongs] = useRecoilState(librarySongState);
+  const [, setIsLibraryOpen] = useRecoilState(libraryOpenState);
+
+  const selectSongHandler = () => {
+    const updatedLibrary = updateLibrary(id, librarySongs);
+    setLibrarySongs(updatedLibrary);
+    setIsLibraryOpen(false);
+  };
+
   return (
-    <div className={`song-container ${song.active ? "active-song" : ""}`} id={String(id)}>
+    <div className={`song-container ${song.active ? "active-song" : ""}`} id={String(id)} onClick={() => selectSongHandler()}>
       <img className="song-image" alt={song.song} src={song.artwork} />
       <div className="song-details">
         <h3 className="song-title">{song.song}</h3>
