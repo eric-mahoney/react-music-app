@@ -10,7 +10,7 @@ const Song = () => {
   const { song, artwork, artist } = currentSong;
 
   return (
-    <div className="song-container">
+    <div className="current-song">
       <div className={`artwork ${isSongPlaying ? "spinning" : ""}`}>
         <img alt={song} src={artwork} />
       </div>
