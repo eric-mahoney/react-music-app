@@ -1,0 +1,36 @@
+.song-container {
+  padding: 10px;
+  display: flex;
+}
+
+.song-container:hover {
+  cursor: pointer;
+  background-color: #caf0f8;
+}
+
+.active-song {
+  background-color: #f8caca;
+}
+
+.song-image {
+  width: 75px;
+  height: 75px;
+}
+
+.song-details {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.song-song {
+  font-size: 20px;
+  color: #000000;
+}
+
+.song-artist {
+  font-size: 14px;
+  color: #555555;
+}
