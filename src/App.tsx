@@ -3,6 +3,7 @@ import Footer from "./components/Footer/Footer";
 import Library from "./components/Library/Library";
 import Navbar from "./components/Navbar/Navbar";
 import Song from "./components/Song/Song";
+import Player from "./components/Player/Player";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Navbar />
       <Library />
       <Song />
+      <Player />
       <Footer />
     </div>
   );
