@@ -4,7 +4,7 @@ import { currentSongState, songPlayingState } from "../../store/Song";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 const Song = () => {
-  const currentSong = useRecoilValue(currentSongState)[0];
+  const currentSong = useRecoilValue(currentSongState);
   const [isSongPlaying, setIsSongPlaying] = useRecoilState(songPlayingState);
 
   const { song, artwork, artist } = currentSong;
