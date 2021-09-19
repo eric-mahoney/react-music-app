@@ -28,7 +28,7 @@ const Player = () => {
   const currentStream = useRecoilValue(getCurrentStream);
 
   const updateActive = (newSong: Song) => {
-    const selectedSong = songs.map((song) => {
+    songs.forEach((song) => {
       if (song.id === newSong.id) {
         return {
           ...song,
