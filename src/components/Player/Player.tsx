@@ -1,11 +1,11 @@
-import { useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 import { faStepForward, faStepBackward } from "@fortawesome/free-solid-svg-icons";
 
 import "./Player.css";
-import { currentLibraryLengthState, currentSongIndexState, getCurrentStream, songPlayingState } from "../../store";
+import { currentLibraryLengthState, currentSongIndexState, currentStreamState, songPlayingState } from "../../store";
 
 const convertTime = (time: number) => {
   return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
@@ -19,9 +19,9 @@ const Player = () => {
   const [isPlaying, setIsPlaying] = useRecoilState(songPlayingState);
   const [currentSongIndex, setCurrentSongIndex] = useRecoilState(currentSongIndexState);
   const libraryLength = useRecoilValue(currentLibraryLengthState);
-  const currentStream = useRecoilValue(getCurrentStream);
-  const audioRef = useRef<HTMLAudioElement>(null); // reference to our audio player
-  const sliderRef = useRef<HTMLInputElement>(null); // reference to our slider
+  const currentStream = useRecoilValue(currentStreamState);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const sliderRef = useRef<HTMLInputElement>(null);
 
   const songHandler = () => {
     if (isPlaying) {
@@ -39,14 +39,16 @@ const Player = () => {
     });
   };
 
-  const dragSlider = (e: any) => {
-    audioRef.current!.currentTime = e.target.value;
-    setCurrentTime({ ...currentTime, currentTime: e.target.value });
+  const dragSlider = (e: ChangeEvent<HTMLInputElement>) => {
+    const sliderValue = Number(e.target.value);
+    setCurrentTime({ ...currentTime, currentTime: sliderValue });
+    if (audioRef.current) {
+      audioRef.current.currentTime = sliderValue;
+    }
   };
 
-  const nextSong = (direction: string) => {
+  const changeSong = (direction: string) => {
     if (direction === "forwards") {
-      // if we hit the end of
       if (currentSongIndex === libraryLength - 1) {
         setCurrentSongIndex(0);
       } else {
@@ -79,9 +81,9 @@ const Player = () => {
           <p>{currentTime.duration ? convertTime(currentTime.duration) : "0:00"}</p>
         </div>
         <div className="player-controls">
-          <FontAwesomeIcon icon={faStepBackward} onClick={() => nextSong("backwards")} />
+          <FontAwesomeIcon icon={faStepBackward} onClick={() => changeSong("backwards")} />
           <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} onClick={songHandler} />
-          <FontAwesomeIcon icon={faStepForward} onClick={() => nextSong("forwards")} />
+          <FontAwesomeIcon icon={faStepForward} onClick={() => changeSong("forwards")} />
         </div>
         <audio
           ref={audioRef}
