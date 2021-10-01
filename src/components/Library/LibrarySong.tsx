@@ -1,4 +1,4 @@
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { Song } from "../../models";
 import { libraryOpenState, librarySongState } from "../../store/Library";
 import "./LibrarySong.css";
@@ -26,7 +26,7 @@ function updateLibrary(id: number, library: Song[]) {
 
 const LibrarySong = ({ song, id }: LibrarySongProps) => {
   const [librarySongs, setLibrarySongs] = useRecoilState(librarySongState);
-  const [, setIsLibraryOpen] = useRecoilState(libraryOpenState);
+  const setIsLibraryOpen = useSetRecoilState(libraryOpenState);
 
   const selectSongHandler = () => {
     const updatedLibrary = updateLibrary(id, librarySongs);
@@ -35,7 +35,11 @@ const LibrarySong = ({ song, id }: LibrarySongProps) => {
   };
 
   return (
-    <div className={`song-container ${song.active ? "active-song" : ""}`} id={String(id)} onClick={() => selectSongHandler()}>
+    <div
+      className={`song-container ${song.active ? "active-song" : ""}`}
+      id={String(id)}
+      onClick={() => selectSongHandler()}
+    >
       <img className="song-image" alt={song.song} src={song.artwork} />
       <div className="song-details">
         <h3 className="song-title">{song.song}</h3>

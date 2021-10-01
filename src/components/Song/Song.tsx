@@ -1,11 +1,11 @@
 import "./Song.css";
 import { currentSongState, songPlayingState } from "../../store/Song";
 
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 
 const Song = () => {
   const currentSong = useRecoilValue(currentSongState);
-  const [isSongPlaying, setIsSongPlaying] = useRecoilState(songPlayingState);
+  const isSongPlaying = useRecoilValue(songPlayingState);
 
   const { song, artwork, artist } = currentSong;
 
