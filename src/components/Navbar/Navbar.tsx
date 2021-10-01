@@ -1,7 +1,7 @@
+import { useRecoilState } from "recoil";
+
 import "./Navbar.css";
 import { libraryOpenState } from "../../store/Library";
-
-import { useRecoilState } from "recoil";
 
 const Navbar = () => {
   const [libraryOpen, setLibraryOpen] = useRecoilState(libraryOpenState);

@@ -1,9 +1,9 @@
 import "./App.css";
-import Footer from "./components/Footer/Footer";
-import Library from "./components/Library/Library";
-import Navbar from "./components/Navbar/Navbar";
 import Song from "./components/Song/Song";
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
 import Player from "./components/Player/Player";
+import Library from "./components/Library/Library";
 
 const App = () => {
   return (

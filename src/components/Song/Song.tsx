@@ -1,7 +1,7 @@
+import { useRecoilValue } from "recoil";
+
 import "./Song.css";
 import { currentSongState, songPlayingState } from "../../store/Song";
-
-import { useRecoilValue } from "recoil";
 
 const Song = () => {
   const currentSong = useRecoilValue(currentSongState);
