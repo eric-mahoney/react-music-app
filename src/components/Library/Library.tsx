@@ -9,11 +9,11 @@ const Library = () => {
 
   return (
     <div className={`library-container ${libraryOpen ? "active-library" : ""} `}>
-      <button className="close-btn" onClick={() => setLibraryOpen(!libraryOpen)}>
+      <button className="close-btn" onClick={() => setLibraryOpen(false)}>
         Close
       </button>
       {songs.map((song) => (
-        <LibrarySong song={song} key={song.id} id={song.id} />
+        <LibrarySong song={song} key={`song-${song.id}`} id={song.id} />
       ))}
     </div>
   );

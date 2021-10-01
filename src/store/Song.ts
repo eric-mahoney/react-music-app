@@ -1,4 +1,4 @@
-import { atom, DefaultValue, selector } from "recoil";
+import { atom, selector } from "recoil";
 
 import { songs } from "../data";
 import { Song } from "../models";
@@ -21,7 +21,7 @@ export const currentSongState = selector<Song>({
   },
 });
 
-export const getCurrentStream = selector({
-  key: "getCurrentStream",
+export const currentStreamState = selector({
+  key: "currentStreamState",
   get: ({ get }) => get(currentSongState).stream,
 });
