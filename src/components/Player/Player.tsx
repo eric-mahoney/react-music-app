@@ -1,49 +1,28 @@
 import { useRef, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
-import { faPause } from "@fortawesome/free-solid-svg-icons";
-import { faStepForward } from "@fortawesome/free-solid-svg-icons";
-import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
+import { faStepForward, faStepBackward } from "@fortawesome/free-solid-svg-icons";
 
 import "./Player.css";
-import { Song } from "../../models";
-import { songs } from "../../data";
-import { useRecoilState, useRecoilValue } from "recoil";
-import {
-  currentSongState,
-  getCurrentStream,
-  songPlayingState,
-} from "../../store";
+import { currentLibraryLengthState, currentSongIndexState, getCurrentStream, songPlayingState } from "../../store";
+
+const convertTime = (time: number) => {
+  return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
+};
 
 const Player = () => {
-  // hook for controlling the state of the song
   const [currentTime, setCurrentTime] = useState({
     currentTime: 0,
     duration: 0,
   });
+  const [isPlaying, setIsPlaying] = useRecoilState(songPlayingState);
+  const [currentSongIndex, setCurrentSongIndex] = useRecoilState(currentSongIndexState);
+  const libraryLength = useRecoilValue(currentLibraryLengthState);
+  const currentStream = useRecoilValue(getCurrentStream);
   const audioRef = useRef<HTMLAudioElement>(null); // reference to our audio player
   const sliderRef = useRef<HTMLInputElement>(null); // reference to our slider
-  const [isPlaying, setIsPlaying] = useRecoilState(songPlayingState);
-  const [currentSong, setCurrentSong] = useRecoilState(currentSongState);
-  const currentStream = useRecoilValue(getCurrentStream);
 
-  const updateActive = (newSong: Song) => {
-    songs.forEach((song) => {
-      if (song.id === newSong.id) {
-        return {
-          ...song,
-          active: true,
-        };
-      } else {
-        return {
-          ...song,
-          active: false,
-        };
-      }
-    });
-  };
-
-  // pauses and plays the music based on the current state
   const songHandler = () => {
     if (isPlaying) {
       audioRef.current!.pause();
@@ -51,12 +30,6 @@ const Player = () => {
       audioRef.current!.play();
     }
     setIsPlaying(!isPlaying);
-  };
-
-  const convertTime = (time: number) => {
-    return (
-      Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
-    );
   };
 
   const updateTime = () => {
@@ -72,20 +45,18 @@ const Player = () => {
   };
 
   const nextSong = (direction: string) => {
-    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     if (direction === "forwards") {
-      const song = songs[(currentIndex + 1) % songs.length];
-      setCurrentSong(song);
-      updateActive(song);
-    } else {
-      if (currentIndex === 0) {
-        const song = songs[songs.length - 1];
-        setCurrentSong(song);
-        updateActive(song);
+      // if we hit the end of
+      if (currentSongIndex === libraryLength - 1) {
+        setCurrentSongIndex(0);
       } else {
-        const song = songs[(currentIndex - 1) % songs.length];
-        setCurrentSong(song);
-        updateActive(song);
+        setCurrentSongIndex(currentSongIndex + 1);
+      }
+    } else {
+      if (currentSongIndex === 0) {
+        setCurrentSongIndex(libraryLength - 1);
+      } else {
+        setCurrentSongIndex(currentSongIndex - 1);
       }
     }
     setIsPlaying(false);
@@ -95,11 +66,7 @@ const Player = () => {
     <div className="player-container">
       <div className="player">
         <div className="timeline-container">
-          <p>
-            {currentTime.currentTime
-              ? convertTime(currentTime.currentTime)
-              : "0:00"}
-          </p>
+          <p>{currentTime.currentTime ? convertTime(currentTime.currentTime) : "0:00"}</p>
           <input
             ref={sliderRef}
             min={0}
@@ -109,23 +76,12 @@ const Player = () => {
             className="song-slider"
             onChange={dragSlider}
           ></input>
-          <p>
-            {currentTime.duration ? convertTime(currentTime.duration) : "0:00"}
-          </p>
+          <p>{currentTime.duration ? convertTime(currentTime.duration) : "0:00"}</p>
         </div>
         <div className="player-controls">
-          <FontAwesomeIcon
-            icon={faStepBackward}
-            onClick={() => nextSong("backwards")}
-          />
-          <FontAwesomeIcon
-            icon={isPlaying ? faPause : faPlay}
-            onClick={songHandler}
-          />
-          <FontAwesomeIcon
-            icon={faStepForward}
-            onClick={() => nextSong("forwards")}
-          />
+          <FontAwesomeIcon icon={faStepBackward} onClick={() => nextSong("backwards")} />
+          <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} onClick={songHandler} />
+          <FontAwesomeIcon icon={faStepForward} onClick={() => nextSong("forwards")} />
         </div>
         <audio
           ref={audioRef}
