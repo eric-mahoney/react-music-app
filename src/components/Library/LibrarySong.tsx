@@ -1,44 +1,32 @@
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { Song } from "../../models";
-import { libraryOpenState, librarySongState } from "../../store/Library";
+import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
+
 import "./LibrarySong.css";
+import { Song } from "../../models";
+import { currentSongIndexState, songPlayingState } from "../../store";
+import { libraryOpenState } from "../../store/Library";
 
 interface LibrarySongProps {
   song: Song;
   id: number;
 }
 
-function updateLibrary(id: number, library: Song[]) {
-  return library.map((song: Song) => {
-    if (song.id === id) {
-      return {
-        ...song,
-        active: true,
-      };
-    } else {
-      return {
-        ...song,
-        active: false,
-      };
-    }
-  });
-}
-
 const LibrarySong = ({ song, id }: LibrarySongProps) => {
-  const [librarySongs, setLibrarySongs] = useRecoilState(librarySongState);
+  const [currentSongIndex, setCurrentSongIndex] = useRecoilState(currentSongIndexState);
   const setIsLibraryOpen = useSetRecoilState(libraryOpenState);
+  const resetPlayingState = useResetRecoilState(songPlayingState);
+  const isActiveSong = currentSongIndex === id;
 
-  const selectSongHandler = () => {
-    const updatedLibrary = updateLibrary(id, librarySongs);
-    setLibrarySongs(updatedLibrary);
+  const selectSongHandler = (index: number) => {
+    setCurrentSongIndex(index);
     setIsLibraryOpen(false);
+    resetPlayingState();
   };
 
   return (
     <div
-      className={`song-container ${song.active ? "active-song" : ""}`}
-      id={String(id)}
-      onClick={() => selectSongHandler()}
+      className={`song-container ${isActiveSong ? "active-song" : ""}`}
+      id={`${id}`}
+      onClick={() => selectSongHandler(id)}
     >
       <img className="song-image" alt={song.song} src={song.artwork} />
       <div className="song-details">
