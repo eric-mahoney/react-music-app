@@ -1,17 +1,24 @@
-import { atom, selector } from "recoil";
+import { atom, DefaultValue, selector } from "recoil";
 
 import { songs } from "../data";
 import { Song } from "../models";
-import { librarySongState } from "./Library";
 
 export const songPlayingState = atom<boolean>({
   key: "songPlayingState",
   default: false,
 });
 
-export const currentSongState = atom<Song>({
+export const currentSongIndexState = atom<number>({
+  key: "currentSongIndexState",
+  default: 0,
+});
+
+export const currentSongState = selector<Song>({
   key: "currentSongState",
-  default: songs[0],
+  get: ({ get }) => {
+    const currentSongIndex = get(currentSongIndexState);
+    return songs[currentSongIndex];
+  },
 });
 
 export const getCurrentStream = selector({
