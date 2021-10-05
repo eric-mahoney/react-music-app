@@ -6,3 +6,8 @@ export interface Song {
   stream: string;
   active: boolean;
 }
+
+export interface SongTime {
+  duration: number;
+  currentTime: number;
+}

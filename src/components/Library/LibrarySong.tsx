@@ -12,10 +12,11 @@ interface LibrarySongProps {
 
 const LibrarySong = ({ song, id }: LibrarySongProps) => {
   const [currentSongIndex, setCurrentSongIndex] = useRecoilState(currentSongIndexState);
-  const setIsLibraryOpen = useSetRecoilState(libraryOpenState);
   const resetPlayingState = useResetRecoilState(songPlayingState);
+  const setIsLibraryOpen = useSetRecoilState(libraryOpenState);
   const isActiveSong = currentSongIndex === id;
 
+  // updates the current song index, closes the library popout, and changing the song playing state to false
   const selectSongHandler = (index: number) => {
     setCurrentSongIndex(index);
     setIsLibraryOpen(false);
