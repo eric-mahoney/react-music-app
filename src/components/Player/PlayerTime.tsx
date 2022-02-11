@@ -3,7 +3,7 @@ interface PlayerTimeProps {
 }
 
 const PlayerTime = ({ time }: PlayerTimeProps) => {
-  return <p>{time}</p>;
+  return <p className="player-time">{time}</p>;
 };
 
 export default PlayerTime;
