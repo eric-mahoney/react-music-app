@@ -9,7 +9,7 @@
   background-color: white;
   z-index: 999;
   color: black;
-  overflow: scroll;
+  overflow: auto;
   transform: translateX(-100%);
   transition: all 0.5s ease;
 }
